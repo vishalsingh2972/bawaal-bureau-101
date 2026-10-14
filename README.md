@@ -17,7 +17,7 @@ Built to explore **Sarvam Bulbul V4 Flash** for the **Sarvam Bulbul Build Challe
   </tr>
 </table>
 
-**Watch the demo:** `YOUR_DEMO_URL` — replace this placeholder with the recorded video link.
+**[Watch the demo](https://x.com/vishalsingh2972/status/2110388523987849277?s=20)**
 
 ## What does it do?
 
