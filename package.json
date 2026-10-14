@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "generate:audio": "node --experimental-strip-types scripts/generate-audio.ts",
     "test:tts": "node --experimental-strip-types --test tests/tts.test.ts",
-    "test:playback": "node --experimental-strip-types --test tests/case-director.test.ts"
+    "test:playback": "node --experimental-strip-types --test tests/case-director.test.ts",
+    "test:crisis": "node --experimental-strip-types --test tests/crisis.test.ts"
   },
   "dependencies": {
     "next": "^16.0.0",

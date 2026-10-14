@@ -16,7 +16,24 @@ Open http://localhost:3000. On Windows PowerShell, use `npm.cmd` if execution po
 
 Add `SARVAM_API_KEY=your_key_here` to `.env.local`. Never commit that file or prefix the key with `NEXT_PUBLIC_`. Existing local env files are preserved. Restart the dev server after adding or changing the key.
 
-## Current build: Phase 3 — three cinematic, playable cases
+## Current build: Phase 4 — real AI brain, speech input and one appeal
+
+The three scripted showcases are preserved. The **Live AI Desk** adds typed or spoken tiny emergencies: **Saaras V4 → editable transcript → Sarvam 105B Conversations → four genuine Bulbul performances**. The AI writes a short personalized title, operator/investigator/news/commissioner dialogue and verdict. Fixed code chooses the existing persona IDs; the model cannot select voices. After a generated verdict, **OBJECT TO THIS VERDICT 🎙️** accepts one typed or recorded defence and generates one contextual commissioner comeback. Replaying the story or comeback reuses browser-cached audio and does not call the language model again.
+
+### Try the live desk
+
+1. Run `npm run dev` with your server-side key configured; open http://localhost:3000.
+2. Below the case cards, select or type **Mummy ne mera poora naam le liya.** and click **Generate my bawaal**. Try **Mera ₹1 UPI payment pending hai.** as an unrelated complaint.
+3. To speak, click **Speak Your Bawaal**, allow the microphone, speak one short sentence and click **Stop recording**. It also stops automatically at 10 seconds. Saaras returns real text into the editable field; inspect/correct it before generating. Typing always remains available. Microphone capture needs HTTPS or localhost and a MediaRecorder-compatible browser.
+4. After the four live voices and verdict, replay the case. Then click **OBJECT TO THIS VERDICT 🎙️**, type/record one defence, and submit. One commissioner response plays; no unlimited conversation loop is provided.
+
+Live routes use the same `SARVAM_API_KEY`: `/api/generate-crisis` calls `https://api.sarvam.ai/v1/chat/completions`, model `sarvam-105b-conversations`, strict structural JSON schema, 1,000 output tokens and a 25-second timeout. Output is independently validated for fields, lengths, plain text and native Hindi script. `/api/transcribe` accepts up to 2 MB multipart audio, strips recorder MIME codec parameters, and calls `/speech-to-text` with `saaras:v4`, `mode=codemix` and keyterms. `/api/appeal` produces one validated commissioner line from the complaint, verdict and defence. Complaints/defences are capped at 160 characters; TTS lines stay below 200. Live generation uses real paid calls; failures display an error and never substitute a template labelled as AI output.
+
+Live endpoints each have six requests/minute/client and a shared 60/minute/process budget. These are basic in-memory budgets, not distributed protection. Same-origin checks support localhost/IP dev aliases and trusted reverse-proxy forwarding. No user recordings are stored by this application; the uploaded audio is sent to Sarvam for transcription. Voice Lab, Tamil and HTTP streaming were skipped to preserve the deadline.
+
+Actual real-API checks passed for two different personalized complaints, eight generated Bulbul lines, one contextual appeal and Saaras codemix transcription. Chrome browser QA passed microphone denial, MediaRecorder upload/transcription/editing, generated-case sequencing, appeal sequencing and zero-new-paid-call replay. Microphone QA used a virtual device fed authentic generated speech, not a human recording; physical device permission/quality and Safari still require manual verification.
+
+Official contracts: [105B chat completions](https://docs.sarvam.ai/api-reference/chat/chat-completions-v1), [Saaras transcription](https://docs.sarvam.ai/api-reference/speech-to-text/transcribe).
 
 Three tiny disasters escalate through real Bulbul voice performances, automatically advancing only when each clip ends. The active case takes over the screen: incoming dispatch, officer cards, Hindi/Hinglish subtitles, investigation, command escalation, a red breaking-news takeover and a ridiculous official verdict. Pause/resume, restart, replay, close and volume controls are included. Space pauses/resumes, R restarts and Escape closes the case when focus is outside an input/button. Captions align to whole dialogue clips; there is no claimed word alignment. Browser autoplay restrictions expose an explicit **Play audio** button.
 
@@ -26,7 +43,7 @@ The repository includes **18 authentic generated Sarvam MP3s** and a matching ma
 
 Click **DISPATCH THIS CASE** on any case file. The first clip loads immediately while remaining pre-generated clips warm into browser memory. One reusable audio element prevents overlapping clips. Pausing while loading also prevents the downloaded clip from starting until you resume. Errors keep the current beat available for retry; case switching/restart/close invalidate stale callbacks and cancel pending requests. Verdicts appear only after the final line finishes.
 
-For clean recordings, run `npm run build` then `npm start` to avoid Next.js development indicators. Use a 390px portrait viewport or a landscape browser window. Voice Lab and live custom incidents remain Phase 4.
+For clean recordings, run `npm run build` then `npm start` to avoid Next.js development indicators. Use a 390px portrait viewport or a landscape browser window. The flagship remains the 47.93-second measured showcase; live generated stories vary in length.
 
 ### Test real audio
 
@@ -87,6 +104,7 @@ npm run lint
 npm run typecheck
 npm run test:tts
 npm run test:playback
+npm run test:crisis
 npm run build
 ```
 
@@ -94,7 +112,7 @@ npm run build
 
 2. Complete: real Bulbul V4 Flash TTS integration; user confirmed live audio works.
 3. Implemented: sequential cinematic playback, all preset MP3s and measured flagship duration.
-4. Deterministic custom incidents and voice-style/pace comparison.
+4. Implemented: real 105B custom incidents, Saaras microphone transcription and a one-shot commissioner appeal. Optional Voice Lab/streaming skipped.
 5. Full QA, deployment instructions and submission assets.
 
 This is entertainment, not an official government service or emergency helpline. Made with Sarvam AI · Bulbul V4 Flash.

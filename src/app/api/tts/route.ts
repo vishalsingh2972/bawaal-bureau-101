@@ -4,13 +4,13 @@ import { voices } from '@/lib/voices';
 import { TtsError, validateTtsInput } from '@/lib/tts';
 import { readLimitedBytes, requireSarvamKey, synthesizeSpeech } from '@/lib/server/sarvam';
 import { takeTtsRequest } from '@/lib/server/rate-limit';
+import { assertSameOrigin } from '@/lib/server/origin';
 
 export const runtime = 'nodejs';
 export const maxDuration = 40;
 export async function POST(request: Request) {
   try {
-    const origin = request.headers.get('origin');
-    if (origin && origin !== new URL(request.url).origin) throw new TtsError('INVALID_ORIGIN', 'Send speech requests from this website.', 403);
+    assertSameOrigin(request);
     if (!request.headers.get('content-type')?.toLowerCase().startsWith('application/json')) throw new TtsError('INVALID_CONTENT_TYPE', 'Use Content-Type: application/json.', 415);
     if (Number(request.headers.get('content-length')) > 4096) throw new TtsError('PAYLOAD_TOO_LARGE', 'Speech requests must be smaller than 4 KB.', 413);
     const raw = await readLimitedBytes(request.body, 4096);
