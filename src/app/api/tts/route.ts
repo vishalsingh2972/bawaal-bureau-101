@@ -5,6 +5,7 @@ import { TtsError, validateTtsInput } from '@/lib/tts';
 import { readLimitedBytes, requireSarvamKey, synthesizeSpeech } from '@/lib/server/sarvam';
 import { takeTtsRequest } from '@/lib/server/rate-limit';
 import { assertSameOrigin } from '@/lib/server/origin';
+import { regionalRelay } from '@/lib/regional-relay';
 
 export const runtime = 'nodejs';
 export const maxDuration = 40;
@@ -21,9 +22,9 @@ export async function POST(request: Request) {
     if (preset) {
       const data = body as Record<string, unknown>;
       if (Object.keys(data).length !== 1 || typeof data.sceneId !== 'string') throw new TtsError('INVALID_SCENE', 'Send a single valid sceneId.');
-      const scene = incidents.flatMap(incident => incident.scenes).find(scene => scene.id === data.sceneId);
+      const scene = [...incidents, regionalRelay].flatMap(incident => incident.scenes).find(scene => scene.id === data.sceneId);
       if (!scene) throw new TtsError('INVALID_SCENE', 'Unknown case dialogue.');
-      const voice = voices[scene.role];
+      const voice = scene.voice ?? voices[scene.role];
       input = validateTtsInput({ text: scene.text, speaker: voice.speaker, language_code: voice.language, pace: voice.pace });
     } else input = validateTtsInput(body);
     requireSarvamKey();

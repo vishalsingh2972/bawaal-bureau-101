@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 import { loadEnvFile } from 'node:process';
 import { incidents } from '../src/lib/incidents.ts';
+import { regionalRelay } from '../src/lib/regional-relay.ts';
 import { voices } from '../src/lib/voices.ts';
 import { inputKey, isMp3, TTS_MODEL, validateTtsInput, type AudioManifest } from '../src/lib/tts.ts';
 import { requireSarvamKey, synthesizeSpeech } from '../src/lib/server/sarvam.ts';
@@ -13,9 +14,10 @@ async function main() {
   const args = process.argv.slice(2);
   const caseIndex = args.indexOf('--case');
   const selection = caseIndex >= 0 ? args[caseIndex + 1] : undefined;
-  if (args.length !== 0 && (args.length !== 2 || args[0] !== '--case' || !selection)) throw new Error('Usage: npm run generate:audio -- [--case biscuit|five-minutes|full-name]');
-  const cases = selection ? incidents.filter(incident => incident.id === selection) : incidents;
-  if (!cases.length) throw new Error('Unknown case. Choose biscuit, five-minutes, or full-name.');
+  if (args.length !== 0 && (args.length !== 2 || args[0] !== '--case' || !selection)) throw new Error('Usage: npm run generate:audio -- [--case biscuit|five-minutes|full-name|pan-india]');
+  const catalog = [...incidents, regionalRelay];
+  const cases = selection ? catalog.filter(incident => incident.id === selection) : catalog;
+  if (!cases.length) throw new Error('Unknown case. Choose biscuit, five-minutes, full-name, or pan-india.');
   const directory = resolve('public/audio'); await mkdir(directory, { recursive: true });
   const manifestPath = resolve(directory, 'manifest.json');
   let manifest: AudioManifest = { model: TTS_MODEL, sampleRate: 24000, codec: 'mp3', clips: {} };
@@ -26,7 +28,7 @@ async function main() {
   const scenes = cases.flatMap(incident => incident.scenes);
   console.log(`Bulbul V4 Flash: ${scenes.length} clips; sequential requests; no automatic retry loop.`);
   for (const [index, scene] of scenes.entries()) {
-    const voice = voices[scene.role];
+    const voice = scene.voice ?? voices[scene.role];
     const input = validateTtsInput({ text: scene.text, speaker: voice.speaker, language_code: voice.language, pace: voice.pace });
     const fingerprint = createHash('sha256').update(inputKey(input)).digest('hex').slice(0, 12);
     const filename = `${scene.id}-${fingerprint}.mp3`;

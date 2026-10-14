@@ -218,6 +218,66 @@
       "bytes": 108672,
       "generatedAt": "2026-10-14T12:42:48.794Z",
       "durationSeconds": 6.792
+    },
+    "relay-1": {
+      "file": "/audio/relay-1-d99c413795cb.mp3",
+      "input": {
+        "text": "ब्रेकिंग न्यूज़! बिस्किट चाय में डूबा। अब कप को crime scene घोषित किया गया!",
+        "speaker": "simran_hi_news_breaking",
+        "language_code": "hi-IN",
+        "pace": 1.12
+      },
+      "bytes": 83328,
+      "generatedAt": "2026-10-14T13:52:35.477Z",
+      "durationSeconds": 5.208
+    },
+    "relay-2": {
+      "file": "/audio/relay-2-70599436dab1.mp3",
+      "input": {
+        "text": "బిస్కెట్ చాయ్‌లో మునిగింది! చెంచా పంపండి. బిర్యానీ టీమ్‌ను ఇంకా పిలవొద్దు!",
+        "speaker": "tarun_te_narration",
+        "language_code": "te-IN",
+        "pace": 1.1
+      },
+      "bytes": 81024,
+      "generatedAt": "2026-10-14T13:52:36.633Z",
+      "durationSeconds": 5.064
+    },
+    "relay-3": {
+      "file": "/audio/relay-3-db7b18a54274.mp3",
+      "input": {
+        "text": "பிஸ்கட் டீயில் மூழ்கியது! மீட்புக்கு கரண்டி தயார். இட்லியை சாட்சியாக அழைக்காதீங்க!",
+        "speaker": "gokul_ta_narration",
+        "language_code": "ta-IN",
+        "pace": 1.1
+      },
+      "bytes": 90624,
+      "generatedAt": "2026-10-14T13:54:43.580Z",
+      "durationSeconds": 5.664
+    },
+    "relay-4": {
+      "file": "/audio/relay-4-be7020456b79.mp3",
+      "input": {
+        "text": "बिस्किट चहात बुडालं! चमचा रवाना झाला. ट्रॅफिकमुळे बचावकार्य थोडं उशिरा होईल!",
+        "speaker": "soham_mr_narration",
+        "language_code": "mr-IN",
+        "pace": 1.1
+      },
+      "bytes": 84864,
+      "generatedAt": "2026-10-14T13:54:44.803Z",
+      "durationSeconds": 5.304
+    },
+    "relay-5": {
+      "file": "/audio/relay-5-c5f1c3a7d1e4.mp3",
+      "input": {
+        "text": "চায়ে বিস্কুট ডুবেছে! চামচ নিয়ে সভা বসেছে। উদ্ধার পরে হবে, আগে আরেক কাপ চা!",
+        "speaker": "roopa_bn_conversational",
+        "language_code": "bn-IN",
+        "pace": 1.1
+      },
+      "bytes": 97536,
+      "generatedAt": "2026-10-14T13:54:46.215Z",
+      "durationSeconds": 6.096
     }
   }
 }

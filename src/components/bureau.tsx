@@ -11,6 +11,7 @@ import { useCasePlayback } from '@/hooks/use-case-playback';
 import { CaseConsole } from './case-console';
 import { measuredCaseDuration } from '@/lib/case-timings';
 import { CustomEmergency } from './custom-emergency';
+import { regionalRelay } from '@/lib/regional-relay';
 
 export function Bureau() {
   const audio = useBulbulAudio();
@@ -29,7 +30,8 @@ export function Bureau() {
     <section className="case-section" ref={casesRef} id="cases"><div className="section-heading"><div><div className="eyebrow">OPEN CASE FILES / 003</div><h2>Pick your catastrophe<span>.</span></h2></div><span className="section-note"><ArrowDown size={15} /> SMALL STAKES. MAXIMUM DRAMA.</span></div><div className="cases">{incidents.map((incident, i) => <button className={`case-card case-${incident.exhibit}`} key={incident.id} onClick={() => start(incident)}><div className="case-top"><span>CASE / {incident.number}</span><span className="case-stamp">{i === 0 ? 'FLAGSHIP' : 'CLASSIFIED'}</span></div><div className="exhibit">{incident.exhibit === 'biscuit' ? <><div className="biscuit">B<span>· · ·<br />· · ·</span>B</div><div className="chai" /><span className="evidence-tag">EXHIBIT A: THE LAST DIP</span></> : incident.exhibit === 'clock' ? <><Clock3 className="exhibit-icon" size={96} strokeWidth={1} /><span className="clock-note">5 min ≈ 45 min</span><span className="evidence-tag">EXHIBIT B: FALSE PROMISES</span></> : <><Fingerprint className="exhibit-icon" size={100} strokeWidth={1} /><span className="name-note">FULL NAME<br />DETECTED</span><span className="evidence-tag">EXHIBIT C: माताजी</span></>}</div><div className="case-copy"><span className="severity">{incident.severity}{measuredCaseDuration(incident) !== null && ` / ${Math.round(measuredCaseDuration(incident)!)} SEC`}</span><h3>{incident.title}</h3><p className="hindi">{incident.hindi}</p><p>{incident.description}</p></div><div className="case-action"><span>DISPATCH THIS CASE</span><ArrowUpRight size={20} /></div></button>)}</div><p className="preview-note"><AudioLines size={16} /> Real Bulbul voices. Automatic escalation. Best experienced with sound on.</p></section>
     </div>{active && <CaseConsole state={state} director={director} audio={audio} onClose={closeCase} />}
     <div hidden={!!active}>
-    <CustomEmergency onGenerated={start} />
+    <section className="relay-promo"><div><div className="eyebrow">SPECIAL SCRIPTED BULBUL SHOWCASE</div><h2>One biscuit. Five newsrooms.</h2><p>Delhi → Hyderabad → Chennai → Mumbai → Kolkata. Native voices. English translations.</p></div><button className="button primary" onClick={() => start(regionalRelay)}>PAN-INDIA ESCALATION 🌏</button></section>
+    {!active && <CustomEmergency onGenerated={start} />}
     <AudioCheck audio={audio} onTest={() => { const voice = voices.operator; void audio.play({ input: { text: testBulbulText, speaker: voice.speaker, language_code: voice.language, pace: voice.pace } }); document.getElementById('audio-check')?.scrollIntoView({ behavior: 'smooth', block: 'center' }); }} /></div><section className="bureau-note"><FileWarning size={30} /><div><h3>We take nothing very seriously.</h3><p>Five officials. Three tiny disasters. One wildly unnecessary response.</p></div><span>SARVAM 105B / SAARAS V4<br /><strong>LIVE AI CONTROL ROOM</strong></span></section><footer><a href="#" className="brand"><ShieldAlert size={18} /> BAWAAL BUREAU</a><span>Made with Sarvam AI · Bulbul V4 Flash<span className="footer-preview"> / real REST audio</span></span><span>PARODY, NOT PUBLIC SERVICE.</span></footer>
   </main>;
 }

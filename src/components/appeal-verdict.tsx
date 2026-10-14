@@ -14,7 +14,7 @@ export function AppealVerdict({ incident, onGenerated }: { incident: Incident; o
     try {
       const response = await fetch('/api/appeal', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ complaint: incident.complaint, verdict: incident.verdict, defence: defence.trim() }), signal: controller.signal }); const data = await response.json();
       if (!response.ok) throw new Error(data?.error?.message || 'The appeal could not be heard. Retry.');
-      onGenerated({ ...incident, id: `${incident.id}-appeal`, title: 'Appeal: ' + incident.title, verdict: data.comeback, resolution: 'Appeal heard. Further objections have been politely confiscated.', appealUsed: true, scenes: [{ id: `${incident.id}-appeal-01`, role: 'announcer', department: 'Verdict', headline: 'ONE OBJECTION. ONE FINAL COMEBACK.', text: data.comeback }] });
+      if (!controller.signal.aborted) onGenerated({ ...incident, id: `${incident.id}-appeal`, title: 'Appeal: ' + incident.title, verdict: data.comeback, resolution: 'Appeal heard. Further objections have been politely confiscated.', appealUsed: true, scenes: [{ id: `${incident.id}-appeal-01`, role: 'announcer', department: 'Verdict', headline: 'ONE OBJECTION. ONE FINAL COMEBACK.', text: data.comeback }] });
     } catch (cause) { if (!controller.signal.aborted) setError(cause instanceof Error ? cause.message : 'Appeal failed.'); }
     finally { if (!controller.signal.aborted) setBusy(false); }
   }

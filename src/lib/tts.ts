@@ -1,15 +1,16 @@
-import { voices } from './voices.ts';
+import { voices, regionalVoices } from './voices.ts';
+import type { VoiceLanguage } from './types.ts';
 
 export const TTS_MODEL = 'bulbul:v4-flash' as const;
 export const MAX_TTS_TEXT = 200;
 export const testBulbulText = 'Bawaal Bureau, emergency desk. Sir, शांत रहिए। बिस्किट आख़िरी बार कब देखा गया था?';
 export const speakerLanguages = {
   ...Object.fromEntries(Object.values(voices).map(voice => [voice.speaker, voice.language])),
+  ...Object.fromEntries(regionalVoices.map(voice => [voice.speaker, voice.language])),
   simran_hi_conversation: 'hi-IN',
-  vetri_ta_suspense: 'ta-IN',
   shubh_en_recovery: 'en-IN',
 } as const;
-export interface TtsInput { text: string; speaker: string; language_code: 'hi-IN' | 'ta-IN' | 'en-IN'; pace: number; }
+export interface TtsInput { text: string; speaker: string; language_code: VoiceLanguage; pace: number; }
 export interface AudioManifestEntry { file: string; input: TtsInput; bytes: number; generatedAt: string; durationSeconds?: number; }
 export interface AudioManifest { model: typeof TTS_MODEL; sampleRate: 24000; codec: 'mp3'; clips: Record<string, AudioManifestEntry>; }
 export class TtsError extends Error {

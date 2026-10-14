@@ -64,8 +64,15 @@ try {
   await evaluate(`const nativeFetch=window.fetch;window.fetch=(input,options)=>{if(String(input).includes('/api/transcribe'))window.__recordedUpload=options.body.get('file');return nativeFetch(input,options);}`);
   await clickText('Speak Your Bawaal');
   await wait("document.querySelector('.recording')");
-  await new Promise(resolveWait=>setTimeout(resolveWait,6000));
-  await evaluate("document.querySelector('.recording').click()",true);
+  if (process.argv.includes('--auto-stop')) {
+    const recordingStarted = Date.now();
+    await wait("!document.querySelector('.recording') && document.querySelector('.record-controls button').textContent.includes('transcribing')", 15_000);
+    assert.ok(Date.now() - recordingStarted >= 9500 && Date.now() - recordingStarted <= 12_000);
+    console.log('PASS: recording automatically stops at 10 seconds');
+  } else {
+    await new Promise(resolveWait=>setTimeout(resolveWait,6000));
+    await evaluate("document.querySelector('.recording').click()",true);
+  }
   await wait("document.querySelector('#complaint').value.includes('बिस्किट') || document.querySelector('.record-controls .audio-error')",30000);
   if (await evaluate("Boolean(document.querySelector('.record-controls .audio-error'))")) {
     const recording = await evaluate("window.__recordedUpload.arrayBuffer().then(buffer=>btoa(Array.from(new Uint8Array(buffer),byte=>String.fromCharCode(byte)).join('')))");

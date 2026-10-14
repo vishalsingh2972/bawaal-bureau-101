@@ -14,8 +14,8 @@ export interface CaseAudio {
   stop(): void;
 }
 export function sceneRequest(incident: Incident, index: number): AudioRequest {
-  const scene = incident.scenes[index]; const voice = voices[scene.role];
-  return { ...(!incident.generated ? { sceneId: scene.id } : {}), input: { text: scene.text, speaker: voice.speaker, language_code: voice.language, pace: voice.pace } };
+  const scene = incident.scenes[index]; const voice = scene.voice ?? voices[scene.role];
+  return { ...(!incident.generated ? { sceneId: scene.id } : {}), input: { text: scene.text.trim().normalize('NFC'), speaker: voice.speaker, language_code: voice.language, pace: voice.pace } };
 }
 // Only a genuine audio-ended event advances the story. Tokens reject stale callbacks after restart/switch/close.
 export class CaseDirector {

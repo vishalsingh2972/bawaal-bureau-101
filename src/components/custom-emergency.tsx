@@ -17,7 +17,7 @@ export function CustomEmergency({ onGenerated }: { onGenerated: (incident: Incid
       const response = await fetch('/api/generate-crisis', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ complaint: complaint.trim() }), signal: controller.signal });
       const data = await response.json();
       if (!response.ok) throw new Error(data?.error?.message || 'The AI could not file this case. Retry.');
-      onGenerated(data.incident);
+      if (!controller.signal.aborted) onGenerated(data.incident);
     } catch (cause) { if (!controller.signal.aborted) setError(cause instanceof Error ? cause.message : 'Generation failed.'); }
     finally { if (!controller.signal.aborted) setBusy(false); }
   }
