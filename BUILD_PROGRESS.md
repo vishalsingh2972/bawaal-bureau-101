@@ -10,7 +10,9 @@ Checks: TypeScript passes; production build passes; local dev server ready at ht
 
 Dependency audit: five high findings in the development-only ESLint chain (`braces` → `micromatch` → `fast-glob` → Next ESLint tooling). Audit suggests an incompatible Next ESLint downgrade; no forced downgrade applied. Revisit in final QA. No audio or Sarvam API requests exist in Phase 1.
 
-## Phase 2 — Real Sarvam audio integration implemented; awaiting live verification
+## Phase 2 — Real Sarvam audio integration complete; user verified live audio
+
+User confirmed actual Bulbul V4 Flash Hindi/Hinglish speech played successfully and explicitly authorized Phase 3. The following Phase 2 verification notes record the checks performed before that user confirmation.
 
 Implemented: server-only `POST /api/tts`, fixed `bulbul:v4-flash` model, 24 kHz MP3, explicit persona/language/pace/plain-text validation, 4 KB request cap, 200-character text limit, same-origin browser checks, basic in-memory per-client/global rate limits, 30-second upstream timeout, safe auth/quota/network/timeout errors and server-side base64 decoding. No unsupported V4 controls, SSML, browser speech synthesis or streaming claims.
 
@@ -22,10 +24,24 @@ Verification: nine unit tests pass (all scripts validate, exact REST contract/ba
 
 Next action belongs to the user: add `SARVAM_API_KEY=your_actual_key` to root `.env.local`, run `npm.cmd run dev`, open http://localhost:3000, click the hero **Test Bulbul audio** link then **Test Bulbul**. If browser autoplay blocks the downloaded MP3, click **Play audio**. Check pause/resume/replay/volume and Network → `/api/tts` → 200 `audio/mpeg`. Never share the key in chat.
 
-**Phase 3 is blocked on the user's explicit confirmation that real Bulbul audio works.** Commit suggestion: `feat: integrate secure Bulbul TTS and audio testing`. No commit/push performed.
+User confirmation received; Phase 3 unlocked. Phase 2 commit suggestion: `feat: integrate secure Bulbul TTS and audio testing`. No agent commit/push performed.
 
-## Next: Phase 3 — The cinematic experience (after live audio confirmation)
+## Phase 3 — The cinematic experience complete
 
-Implement actual sequential case playback with end-of-clip advancement, synchronized per-line subtitles and role switches; tune the biscuit case to a measured 45–55 seconds and pre-generate presets only after the user confirms the key works. Official Sarvam REST/persona docs and local Next.js route/env guides have already been read; no redundant lookup needed.
+Implemented: all three cases play automatically through six genuine voice clips. Case files dispatch directly into a focused cinematic console. The revised biscuit opening declares the chai a crime scene immediately; Aparna takes the call, Shubh files the investigation, Ratan commands the spoon rescue, Simran takes over a red breaking-news broadcast about a second biscuit entering danger, and Ashok closes the case with an evidence-destruction verdict. Role-specific colors/icons/settings, per-line Hindi/Hinglish captions, media-time progress, actual clip-start event logs, waveform styling and a stamped final verdict are included.
 
-Pause here for the user's live-audio test and manual commit/push. A `NEXT` alone must not bypass the real-audio confirmation requirement.
+Architecture: a small event-driven `CaseDirector` advances only on real `HTMLAudioElement` ended events. One retained audio element prevents overlaps; cancellation tokens protect restart/close/case switches. Pause/resume work during both playback and loading. Errors retain the current line for retry; browser autoplay rejection exposes Play audio. Later preset clips warm in the background without speculative live API calls. Final-screen Replay and File another emergency work. Keyboard Space/R/Escape controls and reduced-motion CSS are included. The existing Test Bulbul live REST integration is preserved.
+
+Real assets: generated all 18 authentic `bulbul:v4-flash` MP3 files with the configured key; saved under `public/audio` with current configuration fingerprints and manifest. All 18 pass FFmpeg full decoding and ffprobe MP3/24,000 Hz checks. Measured audio totals: biscuit **47.160s**, five-minutes **39.720s**, full-name **40.056s**. Production browser biscuit playback at normal speed measured **47.93s including transitions**. Total MP3 size is about 2 MB. No placeholder speech, browser synthesis or production playback-rate manipulation exists.
+
+QA passed: lint without warnings, TypeScript, production build, nine TTS unit tests and nine director tests. Native installed Chrome/CDP (no added dependencies) verifies genuine playback, caption changes, pause/resume with a frozen media position, volume, restart, replay, keyboard pause, six-scene progression, final verdict after the final ended event, only one audio element, all three cases, and return to the case list with no runtime exceptions. The biscuit duration test used normal playback; the remaining sequence regression runs use explicitly test-only accelerated playback. Public presets passed against a production server with a placeholder key, confirming preset playback needs no live credential. Server key scanning found zero matches in 31 client/public files. `.env.local` remains ignored.
+
+Responsive/recording QA: inspected actual browser screenshots at 390px mobile width, 390×694 (approximately 9:16) and 1440×810 (16:9). No horizontal overflow; the portrait news captions, pause/restart and volume controls stay in frame. Short viewports receive compact console framing. Screenshots and browser profiles are development-only ignored `.qa/` artifacts. Optional QA scripts: `node scripts/measure-audio.mjs` (FFmpeg installed) and `node scripts/qa-cinematic.mjs <running-local-url>` (installed Chrome; optional CHROME_PATH). Chrome confirms decoding/playback, not a human subjective assessment of every voice performance; the user can review comedy/casting while recording. Safari/iOS autoplay behavior has not been independently tested.
+
+README updated for playable cases, measured duration, clip generation, architecture and clean production recording (`npm run build` then `npm start`). Agent-owned QA servers are stopped after verification; the user's own server is untouched. No commit or push performed.
+
+## Next: Phase 4 — Model showcase
+
+Implement deterministic custom incident broadcasts, same-text Simran conversation/breaking style comparison, pace presets through real TTS, and numerical/Hinglish pronunciation samples. Keep all three completed case flows intact. Optional Tamil/streaming only if safe within time; REST is the reliable baseline. Official Sarvam REST/persona docs and local Next.js route/env guides have already been read; no redundant lookup needed.
+
+Pause for the user's manual commit/push and `NEXT`. Suggested Phase 3 commit: `feat: ship cinematic cases with real Bulbul audio`.

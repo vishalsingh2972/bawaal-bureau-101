@@ -10,7 +10,7 @@ export const speakerLanguages = {
   shubh_en_recovery: 'en-IN',
 } as const;
 export interface TtsInput { text: string; speaker: string; language_code: 'hi-IN' | 'ta-IN' | 'en-IN'; pace: number; }
-export interface AudioManifestEntry { file: string; input: TtsInput; bytes: number; generatedAt: string; }
+export interface AudioManifestEntry { file: string; input: TtsInput; bytes: number; generatedAt: string; durationSeconds?: number; }
 export interface AudioManifest { model: typeof TTS_MODEL; sampleRate: 24000; codec: 'mp3'; clips: Record<string, AudioManifestEntry>; }
 export class TtsError extends Error {
   code: string;

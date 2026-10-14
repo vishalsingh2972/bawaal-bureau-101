@@ -1,1 +1,223 @@
-{"model":"bulbul:v4-flash","sampleRate":24000,"codec":"mp3","clips":{}}
+{
+  "model": "bulbul:v4-flash",
+  "sampleRate": 24000,
+  "codec": "mp3",
+  "clips": {
+    "biscuit-01": {
+      "file": "/audio/biscuit-01-526beb745439.mp3",
+      "input": {
+        "text": "बिस्किट डूबा है? चाय मत पीजिए! ये अब crime scene है।",
+        "speaker": "aparna_hi_customer",
+        "language_code": "hi-IN",
+        "pace": 0.95
+      },
+      "bytes": 72192,
+      "generatedAt": "2026-10-14T12:42:23.881Z",
+      "durationSeconds": 4.512
+    },
+    "biscuit-02": {
+      "file": "/audio/biscuit-02-bb949a878ac2.mp3",
+      "input": {
+        "text": "Bawaal Bureau. Sir, शांत रहिए। बिस्किट आख़िरी बार साबुत कब देखा था?",
+        "speaker": "aparna_hi_customer",
+        "language_code": "hi-IN",
+        "pace": 0.95
+      },
+      "bytes": 82944,
+      "generatedAt": "2026-10-14T12:42:24.960Z",
+      "durationSeconds": 5.184
+    },
+    "biscuit-03": {
+      "file": "/audio/biscuit-03-a60d956f9ca8.mp3",
+      "input": {
+        "text": "Case number 2026-0007. तीन seconds? Sir, ये dipping नहीं, underwater posting है। Parle जी के परिवार को सूचित करो।",
+        "speaker": "shubh_enhi_banking",
+        "language_code": "hi-IN",
+        "pace": 1
+      },
+      "bytes": 192768,
+      "generatedAt": "2026-10-14T12:42:27.209Z",
+      "durationSeconds": 12.048
+    },
+    "biscuit-04": {
+      "file": "/audio/biscuit-04-0d4e53ad9e50.mp3",
+      "input": {
+        "text": "पूरा department alert कर दो! चम्मच उतारो! ये tea break नहीं, rescue operation है! कप को चारों तरफ़ से घेर लो!",
+        "speaker": "ratan_hi_customer_expressive",
+        "language_code": "hi-IN",
+        "pace": 1.08
+      },
+      "bytes": 93696,
+      "generatedAt": "2026-10-14T12:42:28.493Z",
+      "durationSeconds": 5.856
+    },
+    "biscuit-05": {
+      "file": "/audio/biscuit-05-7b5d1d0f074f.mp3",
+      "input": {
+        "text": "ब्रेकिंग न्यूज़! चाय में बिस्किट लापता! अदरक की वजह से visibility कम! हमारे सूत्रों के मुताबिक़... दूसरा बिस्किट भी डुबोया जा रहा है!",
+        "speaker": "simran_hi_news_breaking",
+        "language_code": "hi-IN",
+        "pace": 1.12
+      },
+      "bytes": 129024,
+      "generatedAt": "2026-10-14T12:42:30.211Z",
+      "durationSeconds": 8.064
+    },
+    "biscuit-06": {
+      "file": "/audio/biscuit-06-e1bd068b1158.mp3",
+      "input": {
+        "text": "दोषी पाया गया है... over-dipping. चम्मच को rescue medal। पीड़ित को नया packet। और चाय को... सबूत मिटाने के आरोप में पी लिया गया।",
+        "speaker": "ashok_hi_news",
+        "language_code": "hi-IN",
+        "pace": 0.95
+      },
+      "bytes": 183936,
+      "generatedAt": "2026-10-14T12:42:32.242Z",
+      "durationSeconds": 11.496
+    },
+    "late-01": {
+      "file": "/audio/late-01-3ac3d6641371.mp3",
+      "input": {
+        "text": "आपके दोस्त ने बस पाँच minute कहा था? पैंतालीस हो गए? शांत रहिए। ये हमारा सबसे पुराना cold case है।",
+        "speaker": "aparna_hi_customer",
+        "language_code": "hi-IN",
+        "pace": 0.95
+      },
+      "bytes": 100608,
+      "generatedAt": "2026-10-14T12:42:33.512Z",
+      "durationSeconds": 6.288
+    },
+    "late-02": {
+      "file": "/audio/late-02-f430bbf340ee.mp3",
+      "input": {
+        "text": "Last location: बस निकल रहा हूँ। Background में shower की आवाज़ थी। Suspect अभी towel phase में है।",
+        "speaker": "shubh_enhi_banking",
+        "language_code": "hi-IN",
+        "pace": 1
+      },
+      "bytes": 103296,
+      "generatedAt": "2026-10-14T12:42:34.803Z",
+      "durationSeconds": 6.456
+    },
+    "late-03": {
+      "file": "/audio/late-03-c202299ea167.mp3",
+      "input": {
+        "text": "उसने रास्ते में हूँ भी कहा? किस रास्ते में? Bedroom से bathroom वाला? बयान में बड़ा मोड़ आया है।",
+        "speaker": "shubh_enhi_banking",
+        "language_code": "hi-IN",
+        "pace": 1
+      },
+      "bytes": 94464,
+      "generatedAt": "2026-10-14T12:42:36.034Z",
+      "durationSeconds": 5.904
+    },
+    "late-04": {
+      "file": "/audio/late-04-1542ff5c04e5.mp3",
+      "input": {
+        "text": "सभी घड़ियाँ जब्त करो! पाँच minute को राष्ट्रीय स्तर पर unreliable घोषित करो। समोसा ठंडा नहीं होना चाहिए!",
+        "speaker": "ratan_hi_customer_expressive",
+        "language_code": "hi-IN",
+        "pace": 1.08
+      },
+      "bytes": 89856,
+      "generatedAt": "2026-10-14T12:42:37.294Z",
+      "durationSeconds": 5.616
+    },
+    "late-05": {
+      "file": "/audio/late-05-da6222b7d2e6.mp3",
+      "input": {
+        "text": "बड़ी ख़बर! दोस्त के पाँच minute में तीन मौसम गुज़र गए! इंतज़ार कर रहे युवक को bench से स्थायी पता मिला!",
+        "speaker": "simran_hi_news_breaking",
+        "language_code": "hi-IN",
+        "pace": 1.12
+      },
+      "bytes": 110592,
+      "generatedAt": "2026-10-14T12:42:38.805Z",
+      "durationSeconds": 6.912
+    },
+    "late-06": {
+      "file": "/audio/late-06-e1754a00585c.mp3",
+      "input": {
+        "text": "फैसला: दोस्त का ETA अब calendar में मापा जाएगा। पीड़ित अपना समोसा खा सकता है। दोस्त की चटनी जब्त।",
+        "speaker": "ashok_hi_news",
+        "language_code": "hi-IN",
+        "pace": 0.95
+      },
+      "bytes": 136704,
+      "generatedAt": "2026-10-14T12:42:40.473Z",
+      "durationSeconds": 8.544
+    },
+    "name-01": {
+      "file": "/audio/name-01-7a2ce47c20cf.mp3",
+      "input": {
+        "text": "Mummy ने पूरा नाम लिया? Surname भी? Sir, speaker पर मत डालिए। हमारा भी परिवार है।",
+        "speaker": "aparna_hi_customer",
+        "language_code": "hi-IN",
+        "pace": 0.95
+      },
+      "bytes": 107136,
+      "generatedAt": "2026-10-14T12:42:41.835Z",
+      "durationSeconds": 6.696
+    },
+    "name-02": {
+      "file": "/audio/name-02-fed05571a20c.mp3",
+      "input": {
+        "text": "जाँच में तीन missed calls और sink में एक plate मिली है। दोनों घटनाएँ जुड़ी हो सकती हैं।",
+        "speaker": "shubh_enhi_banking",
+        "language_code": "hi-IN",
+        "pace": 1
+      },
+      "bytes": 121344,
+      "generatedAt": "2026-10-14T12:42:43.354Z",
+      "durationSeconds": 7.584
+    },
+    "name-03": {
+      "file": "/audio/name-03-4bd469a79c92.mp3",
+      "input": {
+        "text": "उन्होंने नीचे आओ कहा? आवाज़ शांत थी? ये और गंभीर है। ग़ुस्सा अब silent mode में है।",
+        "speaker": "shubh_enhi_banking",
+        "language_code": "hi-IN",
+        "pace": 1
+      },
+      "bytes": 99456,
+      "generatedAt": "2026-10-14T12:42:44.640Z",
+      "durationSeconds": 6.216
+    },
+    "name-04": {
+      "file": "/audio/name-04-9236a9166e14.mp3",
+      "input": {
+        "text": "Gaming बंद करो! सारे excuses वापस लो! Operation बर्तन धो शुरू करो। अभी sorry बोलो, कारण बाद में जानेंगे!",
+        "speaker": "ratan_hi_customer_expressive",
+        "language_code": "hi-IN",
+        "pace": 1.08
+      },
+      "bytes": 97152,
+      "generatedAt": "2026-10-14T12:42:45.963Z",
+      "durationSeconds": 6.072
+    },
+    "name-05": {
+      "file": "/audio/name-05-844891db0859.mp3",
+      "input": {
+        "text": "ब्रेकिंग न्यूज़! घर में पूरा नाम गूँजा! Papa ने अख़बार के पीछे शरण ली। छोटे भाई ने popcorn निकाल लिया!",
+        "speaker": "simran_hi_news_breaking",
+        "language_code": "hi-IN",
+        "pace": 1.12
+      },
+      "bytes": 107136,
+      "generatedAt": "2026-10-14T12:42:47.439Z",
+      "durationSeconds": 6.696
+    },
+    "name-06": {
+      "file": "/audio/name-06-17d92806d70a.mp3",
+      "input": {
+        "text": "इस मामले में सर्वोच्च authority Mummy हैं। Bureau की powers यहीं समाप्त। चुपचाप बर्तन धो दीजिए। जय माता दी।",
+        "speaker": "ashok_hi_news",
+        "language_code": "hi-IN",
+        "pace": 0.95
+      },
+      "bytes": 108672,
+      "generatedAt": "2026-10-14T12:42:48.794Z",
+      "durationSeconds": 6.792
+    }
+  }
+}
