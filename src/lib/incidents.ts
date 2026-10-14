@@ -1,4 +1,4 @@
-import type { Incident, Scene } from './types';
+import type { Incident, Scene } from './types.ts';
 const scene = (id: string, role: Scene['role'], department: Scene['department'], text: string, previewMs = 7000): Scene => ({ id, role, department, text, previewMs });
 export const incidents: Incident[] = [
   { id: 'biscuit', number: '2026-0007', title: 'Biscuit Doob Gaya', hindi: 'चाय में शहीद।', description: 'One dip too many. One biscuit missing. A nation on the edge.', severity: 'CODE: SOGGY', exhibit: 'biscuit', verdict: 'Guilty of over-dipping.', resolution: 'चम्मच को rescue medal. अगला बिस्किट केवल दो seconds डुबोइए।', scenes: [

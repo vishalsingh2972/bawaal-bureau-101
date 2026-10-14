@@ -1,4 +1,4 @@
-import type { Role, Voice } from './types';
+import type { Role, Voice } from './types.ts';
 export const voices: Record<Role, Voice> = {
   operator: { name: 'Aparna', title: 'Emergency operator', speaker: 'aparna_hi_customer', language: 'hi-IN', pace: 0.95 },
   investigator: { name: 'Shubh', title: 'Senior investigator', speaker: 'shubh_enhi_banking', language: 'hi-IN', pace: 1 },
