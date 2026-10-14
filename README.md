@@ -131,11 +131,7 @@ Focused checks: `npm run test:tts`, `npm run test:playback`, `npm run test:crisi
 
 Deploy to a Node-capable Next.js host with server-side API routes, and set `SARVAM_API_KEY` in its environment for live features. Use HTTPS for microphone access. For a local production run, build first, then run `npm start`.
 
-## Behind the broadcast
-
-- [Demo script](DEMO_SCRIPT.md): recording sequence and launch-video guidance.
-- [Build progress](BUILD_PROGRESS.md): implementation notes and verification history.
-- [Social copy](SOCIAL.md): launch posts and submission template.
+## Disclaimer
 
 Bawaal Bureau is fictional entertainment and parody, not a government service or real emergency assistance. Included clips are authentic Sarvam-generated audio; live features make paid API calls.
 
