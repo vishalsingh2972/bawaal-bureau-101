@@ -8,7 +8,7 @@ Bawaal Bureau is a fictional AI crisis-control room that turns tiny everyday Ind
 
 Built to explore **Sarvam Bulbul V4 Flash** for the **Sarvam Bulbul Build Challenge**.
 
-## See the bawaal: **[Watch the demo](https://x.com/vishalsingh2972/status/2110388523987849277?s=20)**
+## See the bawaal: **[Watch the demo](https://x.com/vishalsingh2972/status/2110414735187624138?s=20)**
 
 <table>
   <tr>
